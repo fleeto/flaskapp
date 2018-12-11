@@ -29,7 +29,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: version
-          value: v2        
+          value: v1
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
