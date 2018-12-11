@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapp
+  labels:
+    app: flaskapp
+    version: v1
+spec:
+  selector:
+    app: flaskapp
+    version: v1
+  ports:
+    - name: http
+      port: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flaskapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: flaskapp
+        version: v1
+    spec:
+      containers:
+      - name: flaskapp
+        image: dustise/flaskapp
+        imagePullPolicy: IfNotPresent
+---
