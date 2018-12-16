@@ -19,7 +19,7 @@ def fetch_url():
 @app.route('/fetch_with_header')
 def fetch_with_headers():
     url = request.args.get('url', '')
-    request_headers = request.headers
+    request_headers = dict(request.headers)
     with urllib.request.urlopen(url) as response:
         return  "{}\n{}".format(json.dumps(request_headers), response.read())
 
