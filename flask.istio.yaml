@@ -26,7 +26,7 @@ spec:
       containers:
       - name: flaskapp
         image: dustise/flaskapp
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: version
           value: v1
@@ -46,7 +46,7 @@ spec:
       containers:
       - name: flaskapp
         image: dustise/flaskapp
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: version
           value: v2

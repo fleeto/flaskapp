@@ -28,5 +28,5 @@ spec:
       containers:
       - name: flaskapp
         image: dustise/flaskapp
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
 ---
