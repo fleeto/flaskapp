@@ -38,7 +38,7 @@ def fetch_with_headers():
 
     req = Request(url, headers = new_header)
     res = urlopen(req).read()
-    return  "{}\n{}".format(json.dumps(request_headers), res.read())
+    return  "{}\n{}".format(json.dumps(request_headers), res)
 
 @app.route('/fetch_with_trace')
 def fetch_with_trace():
