@@ -30,8 +30,15 @@ def fetch_url():
 def fetch_with_headers():
     url = request.args.get('url', '')
     request_headers = dict(request.headers)
-    with urlopen(url) as response:
-        return  "{}\n{}".format(json.dumps(request_headers), response.read())
+    request_headers = dict(request.headers)
+    new_header = {}
+    for key in request_headers.keys():
+        if key.lower() in TRACE_HEADERS:
+            new_header[key] = request_headers[key]
+
+    req = Request(url, headers = new_header)
+    res = urlopen(req).read()
+    return  "{}\n{}".format(json.dumps(request_headers), res.read())
 
 @app.route('/fetch_with_trace')
 def fetch_with_trace():
@@ -39,7 +46,7 @@ def fetch_with_trace():
     request_headers = dict(request.headers)
     new_header = {}
     for key in request_headers.keys():
-        if key in TRACE_HEADERS:
+        if key.lower() in TRACE_HEADERS:
             new_header[key] = request_headers[key]
 
     req = Request(url, headers = new_header)
