@@ -16,6 +16,10 @@ TRACE_HEADERS = [
     'x-ot-span-context'
 ]
 
+@app.route('/')
+def i_am_fine():
+    return "I am FINE!"
+
 @app.route('/env/<env>')
 def show_env(env):
     return os.environ.get(env)
